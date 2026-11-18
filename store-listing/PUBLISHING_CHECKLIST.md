@@ -22,7 +22,7 @@ Step-by-step launch checklist for **Chrome Web Store**, **Firefox Add-ons (AMO)*
 
 ## Before Uploading to Any Store (2 Minutes)
 
-- [ ] Host `store-listing/privacy-policy.html` on a public HTTPS URL (e.g., GitHub Pages, Cloudflare Pages, Vercel, or your domain `/privacy`) and update the contact email inside it.
+- [x] Privacy policy is live at `https://pulserefresh.pages.dev/privacy-policy` — keep `store-listing/privacy-policy.html` in sync with the hosted page.
 - [ ] Prepare a public Support URL (your website support page or GitHub Issues page).
 
 ---
@@ -47,7 +47,7 @@ Step-by-step launch checklist for **Chrome Web Store**, **Firefox Add-ons (AMO)*
    - Permission Justifications (`storage`, `tabs`, `alarms`, `notifications`, `cookies`, `scripting`, `activeTab`, `power`, `Host permission`): paste each matching block from Section 2 of `PERMISSIONS_AND_DISCLOSURES.md`
    - Remote Code: select **No, I am not using Remote code**
    - Data Usage: leave all collection boxes unchecked (per Section 4) and check all 3 Developer Policy certifications
-   - Privacy Policy URL: paste your hosted `privacy-policy.html` HTTPS URL
+   - Privacy Policy URL: paste `https://pulserefresh.pages.dev/privacy-policy`
 4. [ ] **Distribution tab:** select **Free**, **Public**, **All regions**.
 5. [ ] Click **Save Draft → Submit for Review** *(typical review: 1–3 business days)*.
 
@@ -82,7 +82,7 @@ Step-by-step launch checklist for **Chrome Web Store**, **Firefox Add-ons (AMO)*
 2. [ ] **Availability:** select **Public** and **All markets**.
 3. [ ] **Properties:**
    - Category: `Productivity`
-   - Privacy Policy URL, Website URL, Support contact: paste your live links
+   - Privacy Policy URL: `https://pulserefresh.pages.dev/privacy-policy` · Website URL and Support contact: paste your live links
    - Mature content: **No**
 4. [ ] **Store listings (English):**
    - Short description: paste Edge Short Description from Section 2 of `STORE_LISTING.md`
