@@ -3,122 +3,748 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="PulseRefresh privacy policy, in plain language. A local-first browser extension with no tracking, no telemetry, and no data sales."
+    />
     <title>Privacy Policy — PulseRefresh</title>
     <style>
       :root {
         color-scheme: light dark;
-        --bg: #f8fafc;
-        --card: #ffffff;
+        --bg: #f5f8fb;
+        --surface: #ffffff;
+        --surface-2: #f9fbfd;
         --fg: #0f172a;
-        --muted: #475569;
-        --accent: #059669;
-        --border: #e2e8f0;
+        --muted: #4c5a72;
+        --faint: #66748c;
+        --accent: #047857;
+        --accent-soft: #ecfdf5;
+        --accent-ink: #065f46;
+        --border: #dfe6ef;
+        --border-strong: #cbd5e1;
+        --glow: rgba(5, 150, 105, 0.1);
+        --focus: #047857;
+        --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px rgba(15, 23, 42, 0.05);
       }
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg: #090d16;
-          --card: #0f172a;
-          --fg: #f8fafc;
-          --muted: #94a3b8;
+          --bg: #080d16;
+          --surface: #0f172a;
+          --surface-2: #111c2e;
+          --fg: #e9eff8;
+          --muted: #a3b1c6;
+          --faint: #8695ad;
           --accent: #34d399;
-          --border: #1e293b;
+          --accent-soft: rgba(52, 211, 153, 0.1);
+          --accent-ink: #6ee7b7;
+          --border: #22304a;
+          --border-strong: #32425e;
+          --glow: rgba(52, 211, 153, 0.09);
+          --focus: #6ee7b7;
+          --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 18px 40px rgba(0, 0, 0, 0.28);
         }
       }
+
       * { box-sizing: border-box; }
+      html { scroll-behavior: auto; }
       body {
         margin: 0;
-        background: var(--bg);
+        background:
+          radial-gradient(1000px 520px at 50% -200px, var(--glow), transparent 72%),
+          var(--bg);
         color: var(--fg);
-        font: 16px/1.65 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        padding: 40px 20px;
+        font: 16px/1.7 Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        padding: clamp(16px, 4vw, 56px) 16px 96px;
       }
-      main {
-        max-width: 780px;
-        margin: 0 auto;
-        background: var(--card);
+      .page { max-width: 1120px; margin: 0 auto; }
+      .icon {
+        width: 1.15em;
+        height: 1.15em;
+        flex: none;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.75;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .sr-only {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip-path: inset(50%) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+      .skip-link {
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        z-index: 100;
+        padding: 10px 16px;
+        border-radius: 10px;
+        background: var(--fg);
+        color: var(--bg);
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transform: translateY(-160%);
+      }
+      .skip-link:focus { transform: translateY(0); }
+      :where(a, button):focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+      a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+      a:hover { color: var(--accent-ink); }
+
+      /* Header */
+      .header {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: clamp(22px, 4vw, 36px);
+        box-shadow: var(--shadow);
+        margin-bottom: 24px;
+      }
+      .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: var(--accent-soft);
+        color: var(--accent);
+      }
+      .brand-mark .icon { width: 22px; height: 22px; }
+      .brand-name { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+      .brand-sub { margin: 0; font-size: 12.5px; color: var(--muted); }
+      .page-title {
+        margin: 0 0 8px;
+        font-size: clamp(28px, 5vw, 40px);
+        line-height: 1.15;
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+      }
+      .page-lede {
+        margin: 0 0 22px;
+        max-width: 66ch;
+        color: var(--muted);
+        font-size: 15.5px;
+        text-wrap: pretty;
+      }
+      .meta-row { display: flex; flex-wrap: wrap; gap: 8px; }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 6px 11px;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        background: var(--surface-2);
+        color: var(--muted);
+        font-size: 12.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      .chip strong { color: var(--fg); font-weight: 600; }
+      .chip-accent {
+        border-color: color-mix(in oklab, var(--accent) 32%, transparent);
+        background: var(--accent-soft);
+        color: var(--accent-ink);
+        font-weight: 600;
+      }
+
+      /* Layout */
+      .layout { display: grid; grid-template-columns: 248px minmax(0, 1fr); gap: 28px; align-items: start; }
+      .toc {
+        position: sticky;
+        top: 18px;
+        min-width: 0;
+        background: var(--surface);
         border: 1px solid var(--border);
         border-radius: 16px;
-        padding: 40px 44px;
+        padding: 18px;
+        box-shadow: var(--shadow);
+        scroll-target-group: auto;
       }
-      h1 { font-size: 28px; margin: 0 0 6px; letter-spacing: -0.02em; }
-      .meta { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
-      .callout {
-        border-left: 4px solid var(--accent);
-        background: rgba(16, 185, 129, 0.08);
-        padding: 14px 18px;
-        border-radius: 8px;
-        font-size: 15px;
-        margin-bottom: 28px;
+      .toc-label {
+        margin: 0 0 12px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--faint);
       }
-      h2 { font-size: 19px; margin: 28px 0 10px; letter-spacing: -0.01em; }
-      p, li { color: var(--fg); font-size: 15px; }
-      ul { padding-left: 22px; }
-      li { margin-bottom: 6px; }
-      code {
-        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-        font-size: 13px;
-        padding: 2px 6px;
-        border-radius: 5px;
+      .toggle-all {
+        display: block;
+        width: 100%;
+        margin: 0 0 14px;
+        padding: 8px 10px;
         border: 1px solid var(--border);
+        border-radius: 9px;
+        background: var(--surface-2);
+        color: var(--fg);
+        font: inherit;
+        font-size: 12.5px;
+        font-weight: 600;
+        text-align: center;
+        cursor: pointer;
       }
-      footer {
-        margin-top: 32px;
-        padding-top: 18px;
-        border-top: 1px solid var(--border);
+      .toggle-all:hover { border-color: var(--border-strong); }
+      .toc-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; min-width: 0; }
+      .toc-list a {
+        display: block;
+        padding: 7px 10px;
+        border-radius: 8px;
+        border-left: 2px solid transparent;
         color: var(--muted);
         font-size: 13px;
+        text-decoration: none;
+      }
+      .toc-list a:hover { background: var(--surface-2); color: var(--fg); }
+      .toc-list a:is(:target-current, .target-current) {
+        background: var(--accent-soft);
+        border-left-color: var(--accent);
+        color: var(--accent-ink);
+        font-weight: 650;
+      }
+      .toc-note {
+        margin: 16px 0 0;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+        color: var(--faint);
+        font-size: 11.5px;
+        line-height: 1.5;
+      }
+      main { min-width: 0; }
+      :target { scroll-margin-top: 18px; }
+
+      /* Summary callout */
+      .summary {
+        display: flex;
+        gap: 16px;
+        padding: 22px 24px;
+        margin-bottom: 18px;
+        border: 1px solid color-mix(in oklab, var(--accent) 30%, transparent);
+        border-left: 4px solid var(--accent);
+        border-radius: 16px;
+        background: var(--accent-soft);
+      }
+      .summary-icon { color: var(--accent); padding-top: 2px; }
+      .summary-icon .icon { width: 24px; height: 24px; }
+      .summary > div { min-width: 0; }
+      .summary-kicker {
+        margin: 0 0 4px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent-ink);
+      }
+      .summary-text { margin: 0; font-size: 15px; line-height: 1.65; text-wrap: pretty; }
+
+      /* Accordion sections */
+      .accordion { display: grid; gap: 12px; }
+      .policy-section {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .policy-heading { margin: 0; font-size: inherit; }
+      .policy-trigger {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        min-height: 56px;
+        padding: 12px 18px;
+        border: 0;
+        background: transparent;
+        color: var(--fg);
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+      }
+      .policy-trigger:hover { background: var(--surface-2); }
+      .section-num {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.04em;
+      }
+      .section-title {
+        flex: 1;
+        min-width: 0;
+        font-size: 15.5px;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+      }
+      .chevron {
+        width: 18px;
+        height: 18px;
+        color: var(--faint);
+        rotate: -90deg;
+      }
+      .policy-trigger[aria-expanded="true"] .chevron { rotate: 0deg; }
+      .policy-panel > .panel-inner { padding: 2px 20px 20px; }
+      .policy-panel p { margin: 0 0 12px; color: var(--muted); font-size: 14.5px; text-wrap: pretty; }
+      .policy-panel p:last-child { margin-bottom: 0; }
+      .policy-panel ul { margin: 0; padding-left: 20px; color: var(--muted); font-size: 14.5px; }
+      .policy-panel li { margin-bottom: 8px; padding-left: 2px; text-wrap: pretty; }
+      .policy-panel li:last-child { margin-bottom: 0; }
+      .policy-panel li::marker { color: var(--accent); }
+      .policy-panel strong { color: var(--fg); font-weight: 650; }
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 0.88em;
+        padding: 2px 6px;
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        background: var(--surface-2);
+        color: var(--accent-ink);
+        white-space: nowrap;
+      }
+      .contact-list { list-style: none; padding: 0; margin: 0; }
+      .contact-list li { display: flex; align-items: baseline; gap: 8px; }
+
+      /* Footer */
+      .footer {
+        margin-top: 28px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+        color: var(--faint);
+        font-size: 12.5px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 18px;
+        justify-content: space-between;
+      }
+      .footer p { margin: 0; }
+
+      /* Back to top: visible by default, enhanced where scroll-state queries exist. */
+      .back-to-top {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 20;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border: 1px solid var(--border-strong);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--fg);
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: var(--shadow);
+        visibility: visible;
+        opacity: 1;
+        translate: 0 0;
+        transition: opacity 0.25s, translate 0.25s, visibility 0.25s;
+      }
+      .back-to-top .icon { width: 16px; height: 16px; color: var(--accent); }
+      .scrolled .back-to-top { visibility: visible; opacity: 1; translate: 0 0; }
+      @supports (container-type: scroll-state) {
+        .back-to-top { visibility: hidden; opacity: 0; translate: 0 12px; }
+        @container scroll-state(scrollable: top) {
+          .back-to-top { visibility: visible; opacity: 1; translate: 0 0; }
+        }
+      }
+      .scroll-sentinel { position: absolute; top: 0; width: 1px; height: 1px; visibility: hidden; }
+
+      /* Motion is opt-in. */
+      @media (prefers-reduced-motion: no-preference) {
+        html { scroll-behavior: smooth; }
+        .chevron, .back-to-top { transition-duration: 0.2s; }
+      }
+
+      @media (max-width: 860px) {
+        .layout { grid-template-columns: 1fr; gap: 18px; }
+        .toc { position: static; }
+        .toc-list { display: flex; overflow-x: auto; gap: 6px; padding-bottom: 4px; }
+        .toc-list a { white-space: nowrap; border-left: 0; border-bottom: 2px solid transparent; }
+        .toc-list a:is(:target-current, .target-current) { border-left: 0; border-bottom-color: var(--accent); }
+      }
+      @media (max-width: 520px) {
+        .summary { padding: 18px; gap: 12px; }
+        .policy-trigger { padding: 12px 14px; }
+        .policy-panel > .panel-inner { padding: 2px 16px 16px; }
+        .back-to-top span { display: none; }
+        .back-to-top { padding: 11px; }
+      }
+      @media (forced-colors: active) {
+        .policy-section, .toc, .header, .summary { border: 1px solid CanvasText; }
+        .toc-list a:is(:target-current, .target-current) { outline: 2px solid Highlight; }
+        :where(a, button):focus-visible { outline: 3px solid Highlight; }
+      }
+      @media print {
+        body { background: #fff; padding: 0; color: #000; }
+        .header, .policy-section, .summary { box-shadow: none; border-color: #bbb; }
+        .toc, .toggle-all, .back-to-top, .skip-link, .scroll-sentinel { display: none !important; }
+        .layout { display: block; }
+        .policy-panel[hidden] { display: block !important; content-visibility: visible !important; }
+        .policy-section { break-inside: avoid; margin-bottom: 12px; }
+        a { color: #000; }
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>Privacy Policy — PulseRefresh</h1>
-      <div class="meta">Effective Date: November 17, 2026 · PulseRefresh – Auto Refresh &amp; Page Monitor</div>
+    <div class="scroll-sentinel" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">Skip to policy content</a>
 
-      <div class="callout">
-        <strong>Summary:</strong> PulseRefresh is a local-first, self-contained browser extension. We do not collect, store, sell, rent, or transmit any personal data, browsing history, cookies, page content, analytics, or telemetry to any developer-operated server.
+    <div class="page">
+      <header class="header">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <div>
+            <p class="brand-name">PulseRefresh</p>
+            <p class="brand-sub">Auto Refresh, Page Monitor &amp; Browser Automation</p>
+          </div>
+        </div>
+        <h1 class="page-title">Privacy Policy</h1>
+        <p class="page-lede">
+          Plain-language details on what stays on your device, what never leaves it, and the
+          outbound connections you choose to enable.
+        </p>
+        <div class="meta-row">
+          <span class="chip">Effective <strong>November 17, 2026</strong></span>
+          <span class="chip">Version <strong>1.0.0</strong></span>
+          <span class="chip chip-accent">Local-first · No telemetry</span>
+        </div>
+      </header>
+
+      <div class="layout">
+        <nav class="toc" aria-label="Policy sections">
+          <p class="toc-label">On this page</p>
+          <button id="toggle-all" class="toggle-all" type="button" aria-expanded="true">
+            <span class="toggle-label">Collapse all sections</span>
+          </button>
+          <ol class="toc-list">
+            <li><a href="#at-a-glance">At a glance</a></li>
+            <li><a href="#section-1">1. Data on your device</a></li>
+            <li><a href="#section-2">2. Permissions &amp; page data</a></li>
+            <li><a href="#section-3">3. Outbound connections</a></li>
+            <li><a href="#section-4">4. No analytics or ads</a></li>
+            <li><a href="#section-5">5. Control &amp; deletion</a></li>
+            <li><a href="#section-6">6. Children's privacy</a></li>
+            <li><a href="#section-7">7. Policy changes</a></li>
+            <li><a href="#section-8">8. Contact</a></li>
+          </ol>
+          <p class="toc-note">
+            Tip: press Ctrl / ⌘ + F to find a word anywhere in this policy — even inside a
+            collapsed section.
+          </p>
+        </nav>
+
+        <main id="main" tabindex="-1">
+          <section id="at-a-glance" class="summary" tabindex="-1" aria-labelledby="summary-heading">
+            <h2 id="summary-heading" class="sr-only">At a glance</h2>
+            <span class="summary-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+            <div>
+              <p class="summary-kicker">The short version</p>
+              <p class="summary-text">
+                PulseRefresh is local-first and self-contained. We do not collect, store, sell,
+                rent, or transmit your personal data, browsing history, cookies, page content,
+                analytics, or telemetry to any developer-operated server.
+              </p>
+            </div>
+          </section>
+
+          <section class="accordion" aria-labelledby="policy-details-heading">
+            <h2 id="policy-details-heading" class="sr-only">Policy details</h2>
+
+            <section class="policy-section" id="section-1" tabindex="-1">
+              <h3 class="policy-heading">
+                <button type="button" class="policy-trigger" id="trigger-1" aria-expanded="true" aria-controls="panel-1">
+                  <span class="section-num" aria-hidden="true">01</span>
+                  <span class="section-title">Data stored locally on your device</span>
+                  <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              </h3>
+              <div class="policy-panel" id="panel-1" data-trigger="trigger-1">
+                <div class="panel-inner">
+                  <p>
+                    PulseRefresh stores your settings exclusively in your browser's built-in
+                    extension storage (<code>storage.local</code> and, when you enable it,
+                    <code>storage.sync</code>):
+                  </p>
+                  <ul>
+                    <li>Refresh intervals, countdown overlay preferences, and saved profiles</li>
+                    <li>Active tab job state, local page comparison snapshots, and a clearable activity log</li>
+                    <li>Auto-start URL rules, URL rotation lists, keyword/expression rules, and templates</li>
+                    <li>Automation macros, user scripts, keyboard shortcuts, and domain-scoped cookie rules</li>
+                    <li>Optional webhook URLs, email API credentials, custom sound URLs, or AI provider API keys you enter yourself</li>
+                    <li>A friendly browser and platform label (such as <code>Chrome · macOS</code>) used solely to identify your own synced browsers</li>
+                  </ul>
+                  <p>
+                    When Browser Sync is enabled, your browser vendor (Google, Mozilla, or
+                    Microsoft) syncs your chosen settings across signed-in devices under that
+                    vendor's own privacy policy. PulseRefresh has no access to your account.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="policy-section" id="section-2" tabindex="-1">
+              <h3 class="policy-heading">
+                <button type="button" class="policy-trigger" id="trigger-2" aria-expanded="true" aria-controls="panel-2">
+                  <span class="section-num" aria-hidden="true">02</span>
+                  <span class="section-title">How permissions &amp; page data are used</span>
+                  <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              </h3>
+              <div class="policy-panel" id="panel-2" data-trigger="trigger-2">
+                <div class="panel-inner">
+                  <ul>
+                    <li><strong>Page monitoring:</strong> Page text and element checks run strictly locally in your browser. In Silent XHR mode, your browser fetches the monitored URL directly to compare updated content without flickering the visible tab.</li>
+                    <li><strong>Interaction &amp; form protection:</strong> Local click, scroll, and form-state listeners are used only to pause or skip a scheduled reload when enabled. Keystrokes are never logged or transmitted.</li>
+                    <li><strong>Cookies:</strong> Cookie rules read, clear, preserve, or locally snapshot only cookies matching domains you explicitly configure. Cookies are never transmitted externally.</li>
+                    <li><strong>Power management:</strong> Used only while the optional Prevent System Sleep toggle and at least one refresh job are active.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="policy-section" id="section-3" tabindex="-1">
+              <h3 class="policy-heading">
+                <button type="button" class="policy-trigger" id="trigger-3" aria-expanded="true" aria-controls="panel-3">
+                  <span class="section-num" aria-hidden="true">03</span>
+                  <span class="section-title">Optional outbound connections you configure</span>
+                  <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              </h3>
+              <div class="policy-panel" id="panel-3" data-trigger="trigger-3">
+                <div class="panel-inner">
+                  <p>External network requests occur solely to destinations you configure:</p>
+                  <ul>
+                    <li>The webpages you explicitly choose to reload or monitor via XHR</li>
+                    <li>Optional Slack, Discord, Telegram, or custom HTTPS webhook URLs you add</li>
+                    <li>Optional email delivery APIs (Resend, SendGrid, EmailJS, or a custom HTTPS relay) using your own credentials</li>
+                    <li>An optional OpenAI-compatible endpoint when you enter an API key and generate a script — offline mode makes zero network calls</li>
+                    <li>An optional custom notification audio URL, if configured</li>
+                  </ul>
+                  <p>Any third-party service you connect is governed by its own privacy policy.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="policy-section" id="section-4" tabindex="-1">
+              <h3 class="policy-heading">
+                <button type="button" class="policy-trigger" id="trigger-4" aria-expanded="true" aria-controls="panel-4">
+                  <span class="section-num" aria-hidden="true">04</span>
+                  <span class="section-title">No analytics, ads, or data sharing</span>
+                  <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              </h3>
+              <div class="policy-panel" id="panel-4" data-trigger="trigger-4">
+                <div class="panel-inner">
+                  <ul>
+                    <li>No third-party analytics SDKs — no Google Analytics, Sentry, Mixpanel, or tracking pixels</li>
+                    <li>No advertisements, affiliate link injection, or monetization scripts</li>
+                    <li>No sale, licensing, or transfer of user data to any third party</li>
+                    <li>No remote code execution</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="policy-section" id="section-5" tabindex="-1">
+              <h3 class="policy-heading">
+                <button type="button" class="policy-trigger" id="trigger-5" aria-expanded="true" aria-controls="panel-5">
+                  <span class="section-num" aria-hidden="true">05</span>
+                  <span class="section-title">Data control, export &amp; deletion</span>
+                  <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              </h3>
+              <div class="policy-panel" id="panel-5" data-trigger="trigger-5">
+                <div class="panel-inner">
+                  <p>You stay in control of all extension data at all times:</p>
+                  <ul>
+                    <li>Export or back up your configuration as a JSON file from <strong>Settings → Profiles &amp; Sync</strong></li>
+                    <li>Clear your activity log with one click from <strong>Settings → Activity Log</strong></li>
+                    <li>Remove individual profiles, rules, cookie snapshots, webhooks, or API keys from <strong>Settings</strong></li>
+                    <li>Uninstalling PulseRefresh automatically and permanently deletes all local extension storage from your browser</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="policy-section" id="section-6" tabindex="-1">
+              <h3 class="policy-heading">
+                <button type="button" class="policy-trigger" id="trigger-6" aria-expanded="true" aria-controls="panel-6">
+                  <span class="section-num" aria-hidden="true">06</span>
+                  <span class="section-title">Children's privacy</span>
+                  <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              </h3>
+              <div class="policy-panel" id="panel-6" data-trigger="trigger-6">
+                <div class="panel-inner">
+                  <p>
+                    PulseRefresh is a general-purpose productivity utility and does not knowingly
+                    collect any personal information from anyone, including children under 13.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="policy-section" id="section-7" tabindex="-1">
+              <h3 class="policy-heading">
+                <button type="button" class="policy-trigger" id="trigger-7" aria-expanded="true" aria-controls="panel-7">
+                  <span class="section-num" aria-hidden="true">07</span>
+                  <span class="section-title">Changes to this policy</span>
+                  <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              </h3>
+              <div class="policy-panel" id="panel-7" data-trigger="trigger-7">
+                <div class="panel-inner">
+                  <p>
+                    If this policy is updated to reflect new extension functionality, the revised
+                    policy and updated effective date will be published at the same URL before the
+                    corresponding extension update takes effect.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="policy-section" id="section-8" tabindex="-1">
+              <h3 class="policy-heading">
+                <button type="button" class="policy-trigger" id="trigger-8" aria-expanded="true" aria-controls="panel-8">
+                  <span class="section-num" aria-hidden="true">08</span>
+                  <span class="section-title">Contact</span>
+                  <svg class="icon chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+              </h3>
+              <div class="policy-panel" id="panel-8" data-trigger="trigger-8">
+                <div class="panel-inner">
+                  <p>For privacy questions or support inquiries, reach us through either channel:</p>
+                  <ul class="contact-list">
+                    <li>Email: <a href="mailto:support@pulserefresh.app">support@pulserefresh.app</a></li>
+                    <li>Issues: <a href="https://github.com/pollux-team/pulse-refresh/issues">github.com/pollux-team/pulse-refresh/issues</a></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </section>
+        </main>
       </div>
 
-      <h2>1. Data Stored Locally on Your Device</h2>
-      <p>PulseRefresh stores your settings exclusively in your browser's built-in extension storage (<code>storage.local</code> and, when enabled, <code>storage.sync</code>):</p>
-      <ul>
-        <li>Refresh intervals, countdown overlay preferences, and saved profiles</li>
-        <li>Active tab job state, local page comparison snapshots, and a clearable activity log</li>
-        <li>Auto-start URL rules, URL rotation lists, keyword/expression rules, and templates</li>
-        <li>Automation macros, user scripts, keyboard shortcuts, and domain-scoped cookie rules</li>
-        <li>Optional webhook URLs, email API credentials, custom sound URLs, or AI provider API keys you explicitly enter</li>
-        <li>A friendly browser and platform label (such as <code>Chrome · macOS</code>) used solely to identify your own synced browsers</li>
-      </ul>
-      <p>When Browser Sync is enabled, your browser vendor (Google, Mozilla, or Microsoft) syncs your chosen settings across your signed-in devices under that vendor's privacy policy. PulseRefresh has no access to your account.</p>
+      <footer class="footer">
+        <p>PulseRefresh — Auto Refresh &amp; Page Monitor · Version 1.0.0</p>
+        <p>Open source at <a href="https://github.com/pollux-team/pulse-refresh">pollux-team/pulse-refresh</a></p>
+      </footer>
+    </div>
 
-      <h2>2. How Permissions &amp; Page Data Are Used</h2>
-      <ul>
-        <li><strong>Page Monitoring:</strong> Page text and element checks run strictly locally in your browser. In Silent XHR mode, your browser fetches the monitored URL directly to compare updated content without flickering the tab.</li>
-        <li><strong>Interaction &amp; Form Protection:</strong> Local click, scroll, and form-state listeners are used only to pause or skip a scheduled reload when enabled. Keystrokes are never logged or transmitted.</li>
-        <li><strong>Cookies:</strong> Cookie rules read, clear, preserve, or locally snapshot only cookies matching domains you explicitly configure. Cookies are never transmitted externally.</li>
-        <li><strong>Power Management:</strong> Used only while the optional Prevent System Sleep toggle and at least one refresh job are active.</li>
-      </ul>
+    <a class="back-to-top" href="#main">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+      <span>Back to top</span>
+    </a>
 
-      <h2>3. Optional User-Configured Outbound Connections</h2>
-      <p>External network requests occur solely to destinations you configure:</p>
-      <ul>
-        <li>The webpages you explicitly choose to reload or monitor via XHR</li>
-        <li>Optional Slack, Discord, Telegram, or custom HTTPS webhook URLs you add</li>
-        <li>Optional email delivery APIs (Resend, SendGrid, EmailJS, or custom HTTPS relay) using your own credentials</li>
-        <li>Optional OpenAI-compatible endpoint when you enter an API key and generate an automation script (offline mode makes zero network calls)</li>
-        <li>Optional custom notification audio URL if configured</li>
-      </ul>
+    <script>
+      (() => {
+        const accordion = document.querySelector('.accordion');
+        const triggers = Array.from(document.querySelectorAll('.policy-trigger'));
+        const toggleAll = document.getElementById('toggle-all');
+        const toggleLabel = toggleAll.querySelector('.toggle-label');
+        // Where hidden="until-found" is unsupported, collapsing still works as plain hidden.
+        const searchableCollapse = 'onbeforematch' in HTMLElement.prototype;
 
-      <h2>4. No Analytics, Ads, or Data Sharing</h2>
-      <p>PulseRefresh contains zero analytics libraries, zero advertising or affiliate scripts, zero remote code execution, and never sells or shares user data with third parties.</p>
+        function setPanel(trigger, open) {
+          const panel = document.getElementById(trigger.getAttribute('aria-controls'));
+          if (!panel) return;
+          panel.hidden = open ? false : searchableCollapse ? 'until-found' : true;
+          trigger.setAttribute('aria-expanded', String(open));
+        }
 
-      <h2>5. Data Control &amp; Deletion</h2>
-      <p>You can export your settings as JSON, clear logs, or delete any rule or credential at any time inside PulseRefresh Settings. Uninstalling the extension immediately removes all locally stored extension data.</p>
+        function syncToggleAll() {
+          const allOpen = triggers.every((t) => t.getAttribute('aria-expanded') === 'true');
+          toggleAll.setAttribute('aria-expanded', String(allOpen));
+          toggleLabel.textContent = allOpen ? 'Collapse all sections' : 'Expand all sections';
+        }
 
-      <h2>6. Contact</h2>
-      <p>For privacy inquiries or support, contact <strong>support@pulserefresh.app</strong> (replace with your active support email or repository support URL before publishing).</p>
+        triggers.forEach((trigger) => {
+          trigger.addEventListener('click', () => {
+            setPanel(trigger, trigger.getAttribute('aria-expanded') !== 'true');
+            syncToggleAll();
+          });
+        });
 
-      <footer>PulseRefresh — Auto Refresh &amp; Page Monitor · Version 1.0.0</footer>
-    </main>
+        toggleAll.addEventListener('click', () => {
+          const expand = toggleAll.getAttribute('aria-expanded') !== 'true';
+          triggers.forEach((trigger) => setPanel(trigger, expand));
+          syncToggleAll();
+        });
+
+        // Find-in-page can reveal a collapsed panel directly; mirror that into its trigger.
+        document.addEventListener('beforematch', (event) => {
+          const panel = event.target;
+          if (!(panel instanceof HTMLElement) || !panel.classList.contains('policy-panel')) return;
+          const trigger = document.getElementById(panel.dataset.trigger);
+          if (trigger) {
+            panel.hidden = false;
+            trigger.setAttribute('aria-expanded', 'true');
+            syncToggleAll();
+          }
+        });
+
+        // Scrollspy: native where supported, IntersectionObserver otherwise.
+        const toc = document.querySelector('.toc');
+        const links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+        const setCurrent = (active) => {
+          links.forEach((link) => {
+            const isCurrent = link === active;
+            link.classList.toggle('target-current', isCurrent);
+            link.setAttribute('aria-current', isCurrent ? 'true' : 'false');
+          });
+        };
+        if (CSS.supports('scroll-target-group: auto')) {
+          const sync = () => setCurrent(toc.querySelector('a:target-current'));
+          sync();
+          document.addEventListener('scrollend', sync);
+        } else {
+          const sections = Array.from(document.querySelectorAll('main section[id]'));
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                setCurrent(links.find((l) => l.getAttribute('href') === `#${entry.target.id}`));
+              });
+            },
+            { rootMargin: '-50% 0px -50% 0px', threshold: 0 },
+          );
+          sections.forEach((section) => observer.observe(section));
+        }
+
+        // Back-to-top: dynamic visibility fallback for browsers without scroll-state queries.
+        const backToTop = document.querySelector('.back-to-top');
+        if (!CSS.supports('container-type: scroll-state')) {
+          const sentinel = document.querySelector('.scroll-sentinel');
+          const observer = new IntersectionObserver(([entry]) => {
+            document.documentElement.classList.toggle('scrolled', !entry.isIntersecting);
+          });
+          observer.observe(sentinel);
+        }
+        backToTop.addEventListener('focusout', () => {
+          if (getComputedStyle(backToTop).visibility === 'hidden') {
+            document.getElementById('main').focus();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
