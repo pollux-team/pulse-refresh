@@ -43,6 +43,7 @@ All 5 screenshots meet the exact Chrome Web Store, Firefox AMO, and Edge Add-ons
 ### 5. Submission Documents
 | File | Purpose |
 |---|---|
+| `index.html` | Landing page for the site root at `https://pulserefresh.pages.dev/` — features, screenshots, FAQ and links to the privacy policy and source |
 | `STORE_LISTING.md` | Copy-paste titles, short summaries (122 ch & 214 ch), full description, categories, tags, screenshot captions, v1.0.0 release notes & AMO reviewer build notes |
 | `PERMISSIONS_AND_DISCLOSURES.md` | Single-purpose statement, per-permission justifications (`storage`, `tabs`, `alarms`, `notifications`, `cookies`, `scripting`, `activeTab`, `power`, `<all_urls>`), remote-code answer & data-usage disclosures |
 | `PRIVACY_POLICY.md` | Complete privacy policy in Markdown (ready for Firefox AMO & GitHub) |

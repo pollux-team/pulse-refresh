@@ -119,7 +119,7 @@ PROFILES, CROSS-DEVICE SYNC & PRIVACY
 7. `webhook alerts`
 
 ### Store Listing URLs
-- **Homepage URL:** `https://pulserefresh.app` *(or your GitHub repository URL)*
+- **Homepage URL:** `https://pulserefresh.pages.dev/` *(landing page — `store-listing/index.html`)*
 - **Support URL:** `https://pulserefresh.app/support` *(or your GitHub Issues URL)*
 - **Privacy Policy URL:** `https://pulserefresh.pages.dev/privacy-policy` *(live — keep `store-listing/privacy-policy.html` in sync with this page)*
 
