@@ -65,4 +65,4 @@ If this privacy policy is updated to reflect new extension functionality, the re
 
 ## 8. Contact
 
-For privacy questions or support inquiries, please contact: **support@pulserefresh.app** *(replace with your published support email or GitHub Issues URL prior to submission)*.
+For privacy questions or support inquiries, please contact: **nomandhoni@blinkeye.app**.
